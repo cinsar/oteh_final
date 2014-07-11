@@ -1,28 +1,31 @@
+<div class="panel panel-default">
+ <div class="panel-body">
 <h1>Empresas#new</h1>
 <p>Find me in app/views/empresas/new.html.erb</p>
-
+<div class="input-group input-group-lg">
+  <span class="input-group-addon">@</span>
 	<%= form_tag(controller: :empresas, action: :create) do %>
 	<div>
 		<label>
 			Nombre: 
 			<!-- <input name="persona_nombre" value="" type="text"> -->
-			<%= text_field_tag :empresa_nombre, @empresa.nombre %>
+			<%= text_field_tag :empresa_nombre, @empresa.nombre , class: 'form-control'%>
 		</label>
-	</div>
+
 
 	<div>
 		<label>
 			Giro de la empresa: 
 			<%= text_field_tag :empresa_giro, @empresa.giro%>
 		</label>
-	</div>
+
 
 <div>
 <label>
 		Número de empleados: 
     <%= text_field_tag :empresa_no_empleados, @empresa.no_empleados %>
 </label>
-</div>
+
 <div>
 <label>
 	     Persona Fiscal: 
@@ -98,5 +101,8 @@
 	<%= submit_tag 'Guardar' %>
 	
 <% end %>
-
+</div>
+</div>
+</div>
+</div>
 <!-- form_for -->
