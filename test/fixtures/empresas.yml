@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  giro: MyString
+  no_empleados: MyString
+  persona_fiscal: MyString
+
+two:
+  nombre: MyString
+  giro: MyString
+  no_empleados: MyString
+  persona_fiscal: MyString

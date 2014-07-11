@@ -1,0 +1,27 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+ 
+  pool: 5
+  # username: oteh
+  #password:
+  host: localhost
+  #port: 5432
+
+development:
+  <<: *default
+  database: OTEH_development
+
+  
+test:
+  <<: *default
+  database: OTEH_test
+
+# 
+#
+production:
+  <<: *default
+  database: OTEH_production
+  username: OTEH
+  password: <%= ENV['OTEH_DATABASE_PASSWORD'] %>

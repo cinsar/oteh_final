@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contacto_id: 
+  representable_type: MyString
+  representable_id: MyString
+  puesto: MyString
+
+two:
+  contacto_id: 
+  representable_type: MyString
+  representable_id: MyString
+  puesto: MyString

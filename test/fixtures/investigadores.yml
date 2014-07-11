@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  persona_id: 
+  centro_investigacion_id: 
+  promep: false
+  sni: false
+  tc: false
+
+two:
+  persona_id: 
+  centro_investigacion_id: 
+  promep: false
+  sni: false
+  tc: false

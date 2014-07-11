@@ -1,0 +1,102 @@
+<h1>Empresas#new</h1>
+<p>Find me in app/views/empresas/new.html.erb</p>
+
+	<%= form_tag(controller: :empresas, action: :create) do %>
+	<div>
+		<label>
+			Nombre: 
+			<!-- <input name="persona_nombre" value="" type="text"> -->
+			<%= text_field_tag :empresa_nombre, @empresa.nombre %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Giro de la empresa: 
+			<%= text_field_tag :empresa_giro, @empresa.giro%>
+		</label>
+	</div>
+
+<div>
+<label>
+		Número de empleados: 
+    <%= text_field_tag :empresa_no_empleados, @empresa.no_empleados %>
+</label>
+</div>
+<div>
+<label>
+	     Persona Fiscal: 
+    <%= text_field_tag :empresa_persona_fiscal, @empresa.persona_fiscal %>
+</label>
+</div>
+	<div>
+		<label>
+			Teléfono: 
+			<%= text_field_tag :contacto_tel, @empresa.contacto.tel %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Email: 
+			<%= text_field_tag :contacto_email, @empresa.contacto.email %>
+		</label>
+	</div>
+
+
+<div>
+
+		<label>
+			Pagina web: 
+			<%= text_field_tag :contacto_pag_web, @empresa.contacto.pag_web %>
+		</label>
+	</div>
+	<div>
+		<label>
+			Calle: 
+			<%= text_field_tag :direccion_calle, @empresa.contacto.direccion.calle %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Colonia: 
+			<%= text_field_tag :direccion_colonia,@empresa.contacto.direccion.colonia %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Codigo Postal: 
+			<%= text_field_tag :direccion_cp, @empresa.contacto.direccion.cp %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			País: 
+			<%= select_tag :direccion_pais, options_from_collection_for_select(Pais.all, "id", "nombre"), prompt: "Elige un país" %>
+			<!-- <option value="id">"nombre"</option> -->
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Estado: 
+			<%= select_tag :direccion_estado, options_for_select([]), prompt: "Elige un estado" %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Municipio: 
+			<%= select_tag :direccion_municipio,options_for_select([]), prompt: "Elige un municipio" %>
+		</label>
+	</div>
+
+
+	<%= submit_tag 'Guardar' %>
+	
+<% end %>
+
+<!-- form_for -->

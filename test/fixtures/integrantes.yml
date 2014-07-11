@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  persona_id: 
+  grupo_id: 
+  admon: false
+  status: MyString
+
+two:
+  persona_id: 
+  grupo_id: 
+  admon: false
+  status: MyString

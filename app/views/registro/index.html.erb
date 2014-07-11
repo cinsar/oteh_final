@@ -1,0 +1,10 @@
+<p> ¿A qué tipo de persona pertenece?</p>
+
+<%= form_tag(controller: :registro, action: :index) do %>
+
+	<%= radio_button_tag('tipo_registro', 'externo') %> Externos
+	<%= radio_button_tag('tipo_registro', 'empresa') %> Empresa
+
+	<%= submit_tag 'Siguiente' %>
+
+<% end %>
