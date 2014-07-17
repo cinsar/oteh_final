@@ -1,9 +1,6 @@
+<div class="panel panel-default">
+  <div class="panel-body">
 Formulario empresa
-
-<h1>Empresas#new</h1>
-<p>Find me in app/views/empresas/new.html.erb</p>
-
-	
 	<div>
 		<% @empresa.errors.full_messages.each do |err| %>
 			<p><%= err %></p>
@@ -17,22 +14,16 @@ Formulario empresa
 			<p><%= err %></p>
 		<% end %>
 	</div>
-	
 
 	<%= form_tag(controller: :registro, action: :create_empresa) do %>
-	<div>
-		<label>
-			Nombre: 
-			
-			<%= text_field_tag :empresa_nombre, @empresa.nombre %>
-		</label>
+	<div class="input-group">
+  		<span class="input-group-addon">Nombre:</span>
+  		<%= text_field_tag :empresa_nombre, @empresa.nombre , class: 'form-control'%>
 	</div>
 
-	<div>
-		<label>
-			Giro de la empresa: 
-			<%= text_field_tag :empresa_giro, @empresa.giro%>
-		</label>
+	<div class="input-group">
+			<span class="input-group-addon">Giro de la empresa: </span>
+			<%= text_field_tag :empresa_giro, @empresa.giro , class: 'form-control'%>
 	</div>
 
 <div>
@@ -43,7 +34,7 @@ Formulario empresa
 </div>
 <div>
 <label>
-	     Persona Fiscal: 
+	   Persona Fiscal: 
     <%= text_field_tag :empresa_persona_fiscal, @empresa.persona_fiscal %>
 </label>
 </div>
@@ -166,5 +157,5 @@ Formulario empresa
 	<%= submit_tag 'Guardar' %>
 	
 <% end %>
-
+	</div>
 <!-- form_for -->
