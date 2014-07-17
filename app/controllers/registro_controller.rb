@@ -2,6 +2,11 @@ class RegistroController < ApplicationController
   def index
   	if request.post?
   		#Entró por formaulrio osea eligió una opción
+
+      @user = User.create(email: params[:user_email], password: params[:user_password], password_confirmation: params[:user_password_confirmation])
+      
+      session[:user_registered_id] = @user.id
+      
       case params[:tipo_registro]
         when 'centro_investigacion'
           redirect_to(action: :centro_investigacion) and return
@@ -22,6 +27,9 @@ class RegistroController < ApplicationController
   end
 
   def centro_investigacion
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @centro_investigacion = CentroInvestigacion.new(contacto: Contacto.new(direccion: Direccion.new))
 
     @representante = Representante.new(contacto: Contacto.new(contactable: Persona.new))
@@ -29,6 +37,9 @@ class RegistroController < ApplicationController
   end
 
   def institucion_educativa
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @institucion_educativa = InstitucionEducativa.new(contacto: Contacto.new(direccion: Direccion.new))
 
     @representante = Representante.new
@@ -37,6 +48,9 @@ class RegistroController < ApplicationController
   end
 
   def empresa
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @empresa = Empresa.new(contacto: Contacto.new(direccion: Direccion.new))
 
     @representante = Representante.new(contacto: Contacto.new(contactable: Persona.new))
@@ -44,11 +58,17 @@ class RegistroController < ApplicationController
   end
 
   def investigador
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @persona = Persona.new(contacto: Contacto.new(direccion: Direccion.new))
     @investigador = Investigador.new(centro_investigacion: CentroInvestigacion.new)
   end
 
   def estudiante
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @persona = Persona.new
     @persona.contacto = Contacto.new 
     @persona.contacto.direccion = Direccion.new
@@ -58,6 +78,9 @@ class RegistroController < ApplicationController
   end
 
   def externo
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+    
     @externo = Externo.new(persona: @persona = Persona.new)
     @persona.contacto = Contacto.new 
     @persona.contacto.direccion = Direccion.new
@@ -77,8 +100,13 @@ class RegistroController < ApplicationController
 
     @guardado = false
 
-    ActiveRecord::Base.transaction do
-      @centro_investigacion.save and @representante.save and @guardado = true
+    ActiveRecord::Base.transaction do      
+
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado = (@centro_investigacion.save and @representante.save and @user.save)
+      raise ActiveRecord::Rollback if !@guardado
     end
 
     if @guardado
