@@ -5,7 +5,7 @@ class CreateNotificaciones < ActiveRecord::Migration
       t.string :notificable_type
       t.string :notificable_id
       t.date :fecha
-
+      
       t.timestamps
     end
   end

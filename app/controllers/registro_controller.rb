@@ -2,6 +2,11 @@ class RegistroController < ApplicationController
   def index
   	if request.post?
   		#Entró por formaulrio osea eligió una opción
+
+      @user = User.create(email: params[:user_email], password: params[:user_password], password_confirmation: params[:user_password_confirmation])
+      
+      session[:user_registered_id] = @user.id
+      
       case params[:tipo_registro]
         when 'centro_investigacion'
           redirect_to(action: :centro_investigacion) and return
@@ -22,6 +27,9 @@ class RegistroController < ApplicationController
   end
 
   def centro_investigacion
+    @user_id = session[:user_registered_id]
+    session[:user_registered_id] = nil
+
     @centro_investigacion = CentroInvestigacion.new(contacto: Contacto.new(direccion: Direccion.new))
 
     @representante = Representante.new(contacto: Contacto.new(contactable: Persona.new))
@@ -77,8 +85,13 @@ class RegistroController < ApplicationController
 
     @guardado = false
 
-    ActiveRecord::Base.transaction do
-      @centro_investigacion.save and @representante.save and @guardado = true
+    ActiveRecord::Base.transaction do      
+
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado = (@centro_investigacion.save and @representante.save and @user.save)
+      raise ActiveRecord::Rollback if !@guardado
     end
 
     if @guardado
