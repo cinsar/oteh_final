@@ -10,12 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap.min
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
 //= require turbolinks
 //= require_tree .
-
+//= require jquery.easyWizard
 
 
 //var variable = "Valor";
@@ -33,4 +33,6 @@
 // 	});
 // });
 
-
+$(document).ready(function(){
+	$('#empresaWizard').easyWizard();
+})
