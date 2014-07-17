@@ -1,0 +1,43 @@
+<h1>Grupos#new</h1>
+<p>Find me in app/views/grupos/new.html.erb</p>
+
+<%= form_tag(controller: :grupos, action: :create) do %>
+
+	<div>
+		<label>
+			Tipo: 
+			<!-- <input name="persona_nombre" value="" type="text"> -->
+			<%= select_tag :grupo_tipo, options_for_select([ "Educativo", "Empresarial", "Investigación" ], @grupo.tipo) %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Nombre Grupo: 
+			<%= text_field_tag :grupo_nombre, @grupo.nombre %>
+		</label>
+	</div>
+	<div>
+		<label>
+			Objetivo: 
+			<%= text_field_tag :grupo_objetivo, @grupo.objetivo %>
+		</label>
+	</div>
+	</div>
+	<div>
+		<label>
+			Privado: 
+			<%= radio_button_tag :grupo_privado, true %>
+		</label>
+
+
+		<label>
+			Público: 
+			<%= radio_button_tag :grupo_privado, false %>
+		</label>
+	</div>
+
+
+	
+
+<% end %>

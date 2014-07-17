@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
+//= require foundation
 //= require turbolinks
 //= require_tree .
 //= require jquery.easyWizard
@@ -33,6 +33,6 @@
 // 	});
 // });
 
-$(document).ready(function(){
-	$('#empresaWizard').easyWizard();
-})
+
+$(function(){ $(document).foundation(); });
+

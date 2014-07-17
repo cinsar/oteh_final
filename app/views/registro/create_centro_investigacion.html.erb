@@ -1,0 +1,9 @@
+<h1>Centro de Investigacion#create</h1>
+<p>Find me in app/views/centros_investigaciones/create.html.erb</p>
+
+<% if @guardado %>
+     Se ha guardado a <%= @centro_investigacion.nombre %> correctamente
+
+<% else %> 
+   Hubo errores al guardar a <%= @centro_investigacion.nombre %>. 
+<% end %>   

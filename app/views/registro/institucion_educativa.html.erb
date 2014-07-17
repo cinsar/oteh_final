@@ -1,85 +1,52 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-Formulario empresa
-	<div>
-		<% @empresa.errors.full_messages.each do |err| %>
+Formulario institucion_educativa
+
+<h1>Institucion Educativa#new</h1>
+<p>Find me in app/views/instituciones_educativas/new.html.erb</p>
+
+	<% unless @institucion_educativa.errors.empty? %>
+		<div>
+		<% @institucion_educativa.errors.full_messages.each do |err| %>
 			<p><%= err %></p>
 		<% end %>
+		</div>
+	<% end %>
 
-		<% @representante.errors.full_messages.each do |err| %>
-			<p><%= err %></p>
-		<% end %>
-
-		<% @persona.errors.full_messages.each do |err| %>
-			<p><%= err %></p>
-		<% end %>
-	</div>
-
-	<%= form_tag(controller: :registro, action: :create_empresa) do %>
-	<div class="input-group">
-  		<span class="input-group-addon">Nombre:</span>
-  		<%= text_field_tag :empresa_nombre, @empresa.nombre , class: 'form-control'%>
-	</div>
-
-	<div class="input-group">
-			<span class="input-group-addon">Giro de la empresa: </span>
-			<%= text_field_tag :empresa_giro, @empresa.giro , class: 'form-control'%>
-	</div>
-
-<div>
-<label>
-		Número de empleados: 
-    <%= text_field_tag :empresa_no_empleados, @empresa.no_empleados %>
-</label>
-</div>
-<div>
-<label>
-	   Persona Fiscal: 
-    <%= text_field_tag :empresa_persona_fiscal, @empresa.persona_fiscal %>
-</label>
-</div>
-
-
+	<%= form_tag(controller: :registro, action: :create_institucion_educativa) do %>
 	<div>
 		<label>
-			Teléfono: 
-			<%= text_field_tag :contacto_tel, @empresa.contacto.tel %>
+			Nombre: 
+			
+			<%= text_field_tag :institucion_educativa_nombre, @institucion_educativa.nombre %>
 		</label>
 	</div>
 
+	
 	<div>
 		<label>
-			Email: 
-			<%= text_field_tag :contacto_email, @empresa.contacto.email %>
+			Telefono: 
+			<%= text_field_tag :institucion_educativa_tel, @institucion_educativa.contacto.tel %>
 		</label>
 	</div>
 
-
-<div>
-
-		<label>
-			Pagina web: 
-			<%= text_field_tag :contacto_pag_web, @empresa.contacto.pag_web %>
-		</label>
-	</div>
+		
 	<div>
 		<label>
 			Calle: 
-			<%= text_field_tag :direccion_calle, @empresa.contacto.direccion.calle %>
+			<%= text_field_tag :direccion_calle, @institucion_educativa.contacto.direccion.calle %>
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Colonia: 
-			<%= text_field_tag :direccion_colonia,@empresa.contacto.direccion.colonia %>
+			<%= text_field_tag :direccion_colonia,@institucion_educativa.contacto.direccion.colonia %>
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Codigo Postal: 
-			<%= text_field_tag :direccion_cp, @empresa.contacto.direccion.cp %>
+			<%= text_field_tag :direccion_cp, @institucion_educativa.contacto.direccion.cp %>
 		</label>
 	</div>
 
@@ -154,8 +121,16 @@ Formulario empresa
 		</label>
 	</div>
 
+
+
+
+
+
+
+
+
 	<%= submit_tag 'Guardar' %>
 	
 <% end %>
-	</div>
 
+<!-- form_for -->
