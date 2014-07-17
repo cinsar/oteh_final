@@ -1,2 +1,176 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row" STYLE="background-color: #008cba ">
+  <div class="large-12 columns">    
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#">Observatorio Tecnológico del Estado de Hidalgo</a></h1>
+          </li>
+          <li class="toggle-topbar"><a href="#"><span>OTEH</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+            <ul class="right">
+              <li class="active"><a href="#" data-reveal-id="login">Ingresar</a></li>
+            </ul>
+            <ul class="right">
+              <li class="active"><a href="#" data-reveal-id="registro">Registrarme</a></li>
+            </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+<div id="login" class="reveal-modal" data-reveal>
+  <h2 color="blue">LOGIN</h2>
+    <form data-abide>
+      <div class="password-field">
+      <div class="email-field">
+        <label>Email <small>Requerido</small>
+          <input type="email" required>
+        </label>
+        <small class="error">Ingrese un E-mail válido</small>
+      </div>
+        <label>Contraseña <small>Requrida</small>
+          <input type="password" id="password" required pattern="[a-zA-Z0-9]+">
+        </label>
+        <small class="error">Ingrese su contraseña</small>
+      </div>
+      <button type="submit">Ingresar</button>
+    </form>
+  <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="registro" class="reveal-modal" data-reveal>
+  <h2 color="blue">Registro</h2>
+
+
+
+  	  <%= form_tag(controller: :registro, action: :index, :html => { id: :'data-abide'}) do %> 
+
+  	  <!-- modo ruby 
+
+      <form data-abide>
+
+
+      modo html5 -->
+
+
+
+
+
+      <div class="row">
+        <div class="small-2 large-4 columns">
+          <div class="email-field">
+            <label>Email <small>requerido</small>
+
+
+            <%= text_field_tag :user_email, "", type: 'email', :required => true  %>
+
+          	<!--ASI LO PASAMOS PERO NO VALIDA DE
+          	ACUERDO LA CLASSE DE FOUNDATION 
+            <input type="email" required> -->
+
+
+
+            </label>
+            <small class="error">Se requiere una direccion de correo válida</small>
+          </div>
+        </div>
+        <div class="small-4 large-4 columns">
+          <div class="password-field">
+            <label>Contraseña <small>requerida</small>
+            	<%= password_field_tag :user_password,"", type: 'password', id: 'password2', :required => true, pattern:'[a-zA-Z0-9]+' %>
+              <input type="password" id="password2" required pattern="[a-zA-Z0-9]+">
+            </label>
+          <small class="error">Ingrese una contraseña </small>
+          </div>      
+        </div>
+        <div class="small-6 large-4 columns">
+          <div class="password-confirmation-field">
+              <label>Confirmar contraseña<small>requireda</small>
+                <input type="password" required pattern="[a-zA-Z0-9]+" data-equalto="password2">
+
+              </label>
+            <small class="error">Las contraseñas no coinciden</small>
+          </div>    
+        </div>
+      </div>
+        
+        <div class="row">
+          <h5>Registrarse como:</h5>
+          <div class="small-3 columns">
+            <label for="radio1"><input name="radioButtons" type="radio" id="radio1" required="">Centro de investifación</label>
+            <label for="radio2"><input name="radioButtons" type="radio" id="radio2" required="">Centro Educativo</label>
+            <label for="radio3"><input name="radioButtons" type="radio" id="radio3" required=""> Empresa</label>
+          </div>
+          <div class="small-9 columns">
+            <label for="radio4"><input name="radioButtons" type="radio" id="radio4" required="">Investigador</label>
+            <label for="radio5"><input name="radioButtons" type="radio" id="radio5" required="">Estudiante</label>
+            <label for="radio6"><input name="radioButtons" type="radio" id="radio6" required="">Externo</label>
+          </div>
+          <div class="small-2 columns"> <button type="submit">Registrarse</button> </div>
+          <%= submit_tag 'Siguiente' %>
+      </div>
+     <% end %>    
+     <!-- </form> -->
+  <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+<div class="row">
+      <ul data-orbit="" data-options="animation:slide; pause_on_hover:false; animation_speed:500; navigation_arrows:true; bullets:false;">
+          <li>
+            <%= image_tag "oteh.jpg", :alt => "OTEH", :title => "Observatorio"%>
+            <div class="orbit-caption">
+              Observatorio Tecnológico del Estado de Hidalgo
+            </div>
+          </li>
+          <li class="active">
+          	<%= image_tag "im2.jpg", :alt => "algo", :title => "Observatorio2"%>
+            <div class="orbit-caption">
+              Imagen 2
+            </div>
+          </li>
+          <li>
+            <%= image_tag "oteh.jpg", :alt => "algo3", :title => "Observatorio"%>>
+            <div class="orbit-caption">
+              Imagen 3
+            </div>
+          </li>
+      </ul>
+    </div>
+ 
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="row">
+          <div class="large-8 columns">
+              <div class="panel radius">
+                <div class="row">
+                  <div class="columns">
+                    <h3 class="subheader">Observatorio Tecnológico del Estado de Hidalgo</h3>
+                        <p class="above-magellan">El Observatorio Tecnológico del Estado de Hidalgo es un espacio de encuentro de negocios, investigación, desarrollo tecnológico e innovación, donde la captación, análisis e integración de información especializada, está a la disposición de los agentes económicos participantes, de manera oportuna, actualizada, precisa y objetiva (alertas, bases de datos y estudios específicos), como recurso estratégico para la adecuada toma de decisiones.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="large-4 columns hide-for-small">
+              <h4>¿Quienes somos?</h4><hr/>
+              <p>Espacio de encuentro de negocios, investigación, desarrollo tecnológico e innovación, donde la captación, análisis e integración de información especializada, está a la disposición de los agentes económicos participantes, de manera oportuna, actualizada, precisa y objetiva.</p> 
+          </div> 
+        </div>
+      </div>
+    </div>
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr>
+      <div class="row">
+        <div class="large-6 columns">
+          <p>© Copyright, OTEH todos los Derechos Reservados.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="index.html">INICIO</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
