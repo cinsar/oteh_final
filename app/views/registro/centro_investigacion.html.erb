@@ -19,12 +19,13 @@ Formulario centro_investigacion
 			
 			<%= text_field_tag :centro_investigacion_nombre, @centro_investigacion.nombre %>
 		</label>
-		
+		  <%= hidden_field_tag :user_id, @user_id %>
 	<div>
 		<label>
 			Calle: 
 			<%= text_field_tag :direccion_calle, @centro_investigacion.contacto.direccion.calle %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -32,6 +33,7 @@ Formulario centro_investigacion
 			Colonia: 
 			<%= text_field_tag :direccion_colonia,@centro_investigacion.contacto.direccion.colonia %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -39,6 +41,7 @@ Formulario centro_investigacion
 			Codigo Postal: 
 			<%= text_field_tag :direccion_cp, @centro_investigacion.contacto.direccion.cp %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -47,6 +50,7 @@ Formulario centro_investigacion
 			<%= select_tag :direccion_pais, options_from_collection_for_select(Pais.all, "id", "nombre"), prompt: "Elige un país" %>
 			<!-- <option value="id">"nombre"</option> -->
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -54,6 +58,7 @@ Formulario centro_investigacion
 			Estado: 
 			<%= select_tag :direccion_estado, options_for_select([]), prompt: "Elige un estado" %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -61,6 +66,7 @@ Formulario centro_investigacion
 			Municipio: 
 			<%= select_tag :direccion_municipio, options_for_select([]), prompt: "Elige un municipio" %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	
@@ -73,6 +79,7 @@ Formulario centro_investigacion
 			Nombre: 
 			<%= text_field_tag :representante_nombre, @persona.nombre %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -80,6 +87,7 @@ Formulario centro_investigacion
 			Apellido paterno: 
 			<%= text_field_tag :representante_apellido_pat, @persona.apellido_pat %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 
@@ -88,6 +96,7 @@ Formulario centro_investigacion
 			Apellido materno: 
 			<%= text_field_tag :representante_apellido_mat, @persona.apellido_mat %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -95,6 +104,7 @@ Formulario centro_investigacion
 			Puesto que desempeña: 
 			<%= text_field_tag :representante_puesto, @representante.puesto %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 
@@ -103,6 +113,7 @@ Formulario centro_investigacion
 			Teléfono/Celular: 
 			<%= text_field_tag :representante_tel, @representante.contacto.tel %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<div>
@@ -110,6 +121,7 @@ Formulario centro_investigacion
 			E-mail: 
 			<%= text_field_tag :representante_email, @representante.contacto.email %>
 		</label>
+		<%= hidden_field_tag :user_id, @user_id %>
 	</div>
 
 	<%= submit_tag 'Guardar' %>

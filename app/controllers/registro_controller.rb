@@ -28,7 +28,7 @@ class RegistroController < ApplicationController
 
   def centro_investigacion
     @user_id = session[:user_registered_id]
-    session[:user_registered_id] = nil
+    session[:user_new_id] = nil
 
     @centro_investigacion = CentroInvestigacion.new(contacto: Contacto.new(direccion: Direccion.new))
 
@@ -37,6 +37,9 @@ class RegistroController < ApplicationController
   end
 
   def institucion_educativa
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @institucion_educativa = InstitucionEducativa.new(contacto: Contacto.new(direccion: Direccion.new))
 
     @representante = Representante.new
@@ -45,6 +48,9 @@ class RegistroController < ApplicationController
   end
 
   def empresa
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @empresa = Empresa.new(contacto: Contacto.new(direccion: Direccion.new))
 
     @representante = Representante.new(contacto: Contacto.new(contactable: Persona.new))
@@ -52,11 +58,17 @@ class RegistroController < ApplicationController
   end
 
   def investigador
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @persona = Persona.new(contacto: Contacto.new(direccion: Direccion.new))
     @investigador = Investigador.new(centro_investigacion: CentroInvestigacion.new)
   end
 
   def estudiante
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+
     @persona = Persona.new
     @persona.contacto = Contacto.new 
     @persona.contacto.direccion = Direccion.new
@@ -66,6 +78,9 @@ class RegistroController < ApplicationController
   end
 
   def externo
+    @user_id = session[:user_registered_id]
+    session[:user_new_id] = nil
+    
     @externo = Externo.new(persona: @persona = Persona.new)
     @persona.contacto = Contacto.new 
     @persona.contacto.direccion = Direccion.new
