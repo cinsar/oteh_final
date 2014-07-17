@@ -12,7 +12,7 @@ Formulario investigador
 	<% end %>
 
 	<%= form_tag(controller: :registro, action: :create_investigador) do %>
-
+	<%= hidden_field_tag :user_id, @user_id %>
 	<div>
 		<label>
 			Nombre: 
@@ -62,6 +62,26 @@ Formulario investigador
 			<%= text_field_tag :direccion_colonia,@persona.contacto.direccion.colonia %>
 		</label>
 	</div>
+	<div>
+		<label>
+			País: 
+			<%= select_tag :direccion_pais, options_from_collection_for_select(Pais.all, "id", "nombre"), prompt: "Elige un país" %>
+			<!-- <option value="id">"nombre"</option> -->
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Estado: 
+			<%= select_tag :direccion_estado, options_for_select([]), prompt: "Elige un estado" %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Municipio: 
+			<%= select_tag :direccion_municipio, options_for_select([]), prompt: "Elige un municipio" %>
+		</label>
 
 	<div>
 		<label>
