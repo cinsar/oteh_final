@@ -1,0 +1,9 @@
+<h1>Externo#create</h1>
+<p>Find me in app/views/externos/create.html.erb</p>
+
+<% if @guardado %>
+     Se ha guardado a <%= @persona.nombre %> correctamente
+
+<% else %> 
+   Hubo errores al guardar a <%= @externo.persona.nombre %>. 
+<% end %>   

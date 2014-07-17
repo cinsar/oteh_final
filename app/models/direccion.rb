@@ -1,5 +1,5 @@
 class Direccion < ActiveRecord::Base
-	has_one :contacto
+	has_one :contacto 
 	belongs_to :municipio
   
 

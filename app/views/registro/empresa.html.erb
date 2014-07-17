@@ -3,6 +3,22 @@ Formulario empresa
 <h1>Empresas#new</h1>
 <p>Find me in app/views/empresas/new.html.erb</p>
 
+	
+	<div>
+		<% @empresa.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+
+		<% @representante.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+
+		<% @persona.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+	</div>
+	
+
 	<%= form_tag(controller: :registro, action: :create_empresa) do %>
 	<div>
 		<label>
@@ -31,6 +47,8 @@ Formulario empresa
     <%= text_field_tag :empresa_persona_fiscal, @empresa.persona_fiscal %>
 </label>
 </div>
+
+
 	<div>
 		<label>
 			Teléfono: 
@@ -144,14 +162,6 @@ Formulario empresa
 			<%= text_field_tag :representante_email, @representante.contacto.email %>
 		</label>
 	</div>
-
-
-
-
-
-
-
-
 
 	<%= submit_tag 'Guardar' %>
 	

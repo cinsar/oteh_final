@@ -1,0 +1,27 @@
+Este es el codigo del action index de RegistrosController
+
+
+
+      if params[:tipo_registro] == 'centro_investigacion'
+        redirect_to(action: :centro_investigacion) and return
+      end
+
+  		if params[:tipo_registro] == 'institucion_educativa'
+  			redirect_to(action: :institucion_educativa) and return
+  		end
+
+      if params[:tipo_registro] == 'empresa'
+        redirect_to(action: :empresa) and return
+      end
+
+      if params[:tipo_registro] == 'investigador'
+        redirect_to(action: :investigador) and return
+      end
+
+      if params[:tipo_registro] == 'estudiante'
+        redirect_to(action: :estudiante) and return
+      end
+
+      if params[:tipo_registro] == 'externo'
+        redirect_to(action: :externo) and return
+      end

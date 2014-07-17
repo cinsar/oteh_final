@@ -1,0 +1,82 @@
+Formulario investigador
+
+<h1>Investigadores#new</h1>
+<p>Find me in app/views/investigadores/new.html.erb</p>
+
+	<% unless @investigador.errors.empty? %>
+		<div>
+		<% @investigador.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+		</div>
+	<% end %>
+
+	<%= form_tag(controller: :registro, action: :create_investigador) do %>
+
+	<div>
+		<label>
+			Nombre: 
+			<!-- <input name="persona_nombre" value="" type="text"> -->
+			<%= text_field_tag :persona_nombre, @persona.nombre %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Apellido paterno: 
+			<%= text_field_tag :persona_apellido_pat, @persona.apellido_pat %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Apellido materno: 
+			<%= text_field_tag :persona_apellido_mat, @persona.apellido_mat %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Teléfono: 
+			<%= text_field_tag :contacto_tel, @persona.contacto.tel %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Email: 
+			<%= text_field_tag :contacto_email, @persona.contacto.email %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Calle: 
+			<%= text_field_tag :direccion_calle, @persona.contacto.direccion.calle %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Colonia: 
+			<%= text_field_tag :direccion_colonia,@persona.contacto.direccion.colonia %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Codigo Postal: 
+			<%= text_field_tag :direccion_cp, @persona.contacto.direccion.cp %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Centro de Investigacion: 
+			<%= text_field_tag :centro_investigacion_nombre, @investigador.centro_investigacion %>
+		</label>
+	</div>
+
+	<%= submit_tag 'Guardar' %>
+	
+<% end %>

@@ -1,10 +1,27 @@
 <p> ¿A qué tipo de persona pertenece?</p>
 
 <%= form_tag(controller: :registro, action: :index) do %>
-
-	<%= radio_button_tag('tipo_registro', 'externo') %> Externos
+	<div>
+	<%= radio_button_tag('tipo_registro', 'centro_investigacion') %> Centro de Investigación
+	</div>
+	<div>
+	<%= radio_button_tag('tipo_registro', 'institucion_educativa') %> Institucion Educativa
+	</div>
+	<div>
 	<%= radio_button_tag('tipo_registro', 'empresa') %> Empresa
+	</div>
+	<div>
+	<%= radio_button_tag('tipo_registro', 'investigador') %> Investigador
+	</div>
+	<div>
+	<%= radio_button_tag('tipo_registro', 'estudiante') %> Estudiante
+	</div>
+	<div>
+	<%= radio_button_tag('tipo_registro', 'externo') %> Externo
+	</div>
 
+	<div>
 	<%= submit_tag 'Siguiente' %>
+	</div>
 
 <% end %>

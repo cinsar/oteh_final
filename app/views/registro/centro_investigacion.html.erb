@@ -1,0 +1,118 @@
+Formulario centro_investigacion
+
+<h1>Centro Investigaciones#new</h1>
+<p>Find me in app/views/centros_investigaciones/new.html.erb</p>
+
+	<% unless @centro_investigacion.errors.empty? %>
+		<div>
+		<% @centro_investigacion.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+		</div>
+	<% end %>
+
+	<%= form_tag(controller: :registro, action: :create_centro_investigacion) do %>
+	<div>
+		<label>
+			Nombre: 
+			
+			<%= text_field_tag :centro_investigacion_nombre, @centro_investigacion.nombre %>
+		</label>
+		
+	<div>
+		<label>
+			Calle: 
+			<%= text_field_tag :direccion_calle, @centro_investigacion.contacto.direccion.calle %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Colonia: 
+			<%= text_field_tag :direccion_colonia,@centro_investigacion.contacto.direccion.colonia %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Codigo Postal: 
+			<%= text_field_tag :direccion_cp, @centro_investigacion.contacto.direccion.cp %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			País: 
+			<%= select_tag :direccion_pais, options_from_collection_for_select(Pais.all, "id", "nombre"), prompt: "Elige un país" %>
+			<!-- <option value="id">"nombre"</option> -->
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Estado: 
+			<%= select_tag :direccion_estado, options_for_select([]), prompt: "Elige un estado" %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Municipio: 
+			<%= select_tag :direccion_municipio, options_for_select([]), prompt: "Elige un municipio" %>
+		</label>
+	</div>
+
+	
+
+
+<!-- segundo formulario -->
+
+	<div>
+		<label>
+			Nombre: 
+			<%= text_field_tag :representante_nombre, @persona.nombre %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Apellido paterno: 
+			<%= text_field_tag :representante_apellido_pat, @persona.apellido_pat %>
+		</label>
+	</div>
+
+
+	<div>
+		<label>
+			Apellido materno: 
+			<%= text_field_tag :representante_apellido_mat, @persona.apellido_mat %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Puesto que desempeña: 
+			<%= text_field_tag :representante_puesto, @representante.puesto %>
+		</label>
+	</div>
+
+
+	<div>
+		<label>
+			Teléfono/Celular: 
+			<%= text_field_tag :representante_tel, @representante.contacto.tel %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			E-mail: 
+			<%= text_field_tag :representante_email, @representante.contacto.email %>
+		</label>
+	</div>
+
+	<%= submit_tag 'Guardar' %>
+	
+<% end %>
+
+<!-- form_for -->

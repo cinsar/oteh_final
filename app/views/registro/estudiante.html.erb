@@ -1,0 +1,112 @@
+Formulario estudiante
+
+<h1>Estudiante#new</h1>
+<p>Find me in app/views/estudiantes/new.html.erb</p>
+
+	<div>
+		<% @estudiante.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+
+		<% @persona.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+
+		<% @estudiante.institucion_educativa.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+
+	</div>
+
+	<%= form_tag(controller: :registro, action: :create_estudiante) do %>
+	<div>
+		<label>
+			Nombre: 
+			<!-- <input name="persona_nombre" value="" type="text"> -->
+			<%= text_field_tag :persona_nombre, @persona.nombre %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Apellido paterno: 
+			<%= text_field_tag :persona_apellido_pat, @persona.apellido_pat %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Apellido materno: 
+			<%= text_field_tag :persona_apellido_mat, @persona.apellido_mat %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Teléfono: 
+			<%= text_field_tag :contacto_tel, @persona.contacto.tel %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Email: 
+			<%= text_field_tag :contacto_email, @persona.contacto.email %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Calle: 
+			<%= text_field_tag :direccion_calle, @persona.contacto.direccion.calle %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Colonia: 
+			<%= text_field_tag :direccion_colonia,@persona.contacto.direccion.colonia %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			País: 
+			<%= select_tag :direccion_pais, options_from_collection_for_select(Pais.all, "id", "nombre"), prompt: "Elige un país" %>
+			<!-- <option value="id">"nombre"</option> -->
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Estado: 
+			<%= select_tag :direccion_estado, options_for_select([]), prompt: "Elige un estado" %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Municipio: 
+			<%= select_tag :direccion_municipio, options_for_select([]), prompt: "Elige un municipio" %>
+		</label>
+	</div>
+
+
+	<div>
+		<label>
+			Codigo Postal: 
+			<%= text_field_tag :direccion_cp, @persona.contacto.direccion.cp %>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Institucion Educativa: 
+			<%= text_field_tag :institucion_educativa_nombre, @estudiante.institucion_educativa.nombre %>
+		</label>
+	</div>
+
+<%= submit_tag 'Guardar' %>
+	
+<% end %>
+<!-- form_for -->
