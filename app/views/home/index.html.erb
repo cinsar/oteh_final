@@ -26,12 +26,12 @@
       <div class="password-field">
       <div class="email-field">
         <label>Email <small>Requerido</small>
-          <%= f.text_field :email%>
+          <%= f.text_field :email , html: {:required => true}%>
         </label>
         <small class="error">Ingrese un E-mail válido</small>
       </div>
         <label>Contraseña <small>Requrida</small>
-          <%= f.password_field :password %>
+          <%= f.password_field :password, :required => "[a-zA-Z]+"%>
         </label>
         <small class="error">Ingrese su contraseña</small>
       </div>
@@ -39,27 +39,15 @@
       <label for="radio1"><%= f.check_box :remember_me %> <%= f.label :recuerdame %></label>
       <label><%= link_to "¿Olvídaste tu contraseña?", new_password_path(:user) %></label>
     <% end %>
+  </form>
   <a class="close-reveal-modal">&#215;</a>
   </div>
 
   <div id="registro" class="reveal-modal" data-reveal>
   <h2 color="blue">Registro</h2>
 
-
-
+    <form data-abide>
   	  <%= form_tag(controller: :registro, action: :index, html: {:'data-abide' => true}) do %> 
-
-  	  <!-- modo ruby 
-
-      <form data-abide>
-
-
-      modo html5 -->
-
-
-
-
-
       <div class="row">
         <div class="small-2 large-4 columns">
           <div class="email-field">
@@ -120,6 +108,7 @@
           <div class="small-2 columns"> <button type="submit">Registrarse</button> </div>
       </div>
      <% end %>    
+    </form>
      <!-- </form> -->
   <a class="close-reveal-modal">&#215;</a>
   </div>
