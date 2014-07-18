@@ -1,5 +1,7 @@
 class ArticuloController < ApplicationController
-  def new
+  layout 'home_authenticated'
+
+  def nuevo
   	@articulo = Articulo.new
   	@articulo.integrante = Integrante.new
   	#@articulo.integrante.comentario = Comentario.new

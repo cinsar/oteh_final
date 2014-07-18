@@ -20,6 +20,12 @@
 
   <body>
 
+  	<ul>
+  		<li><%=  link_to 'Inicio',  authenticated_root_url %></li>
+  		<li><%=  link_to 'Grupos', { controller: :grupos, action: :nuevo }%></li>
+  		<li><%=  link_to 'Articulo', { controller: :articulo, action: :nuevo }%></li>
+  	</ul>
+
     <%= yield %>
 
     <%= javascript_include_tag "application" %>
