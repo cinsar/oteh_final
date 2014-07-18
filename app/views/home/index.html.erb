@@ -44,7 +44,7 @@
 
 
 
-  	  <%= form_tag(controller: :registro, action: :index, :html => { id: :'data-abide'}) do %> 
+  	  <%= form_tag(controller: :registro, action: :index, html: {:'data-abide' => true}) do %> 
 
   	  <!-- modo ruby 
 
@@ -79,7 +79,6 @@
           <div class="password-field">
             <label>Contraseña <small>requerida</small>
             	<%= password_field_tag :user_password,"", type: 'password', id: 'password2', :required => true, pattern:'[a-zA-Z0-9]+' %>
-              <input type="password" id="password2" required pattern="[a-zA-Z0-9]+">
             </label>
           <small class="error">Ingrese una contraseña </small>
           </div>      
@@ -87,7 +86,8 @@
         <div class="small-6 large-4 columns">
           <div class="password-confirmation-field">
               <label>Confirmar contraseña<small>requireda</small>
-                <input type="password" required pattern="[a-zA-Z0-9]+" data-equalto="password2">
+              <%= password_field_tag :user_password,"", type: 'password', id: 'password', :required => true, pattern:'[a-zA-Z0-9]+', :'data-equalto' => :password , html: {:'data-equalto' => 'password2'} %>
+              <!-- <input type="password" required pattern="[a-zA-Z0-9]+" data-equalto="password2"> -->
 
               </label>
             <small class="error">Las contraseñas no coinciden</small>
@@ -98,17 +98,23 @@
         <div class="row">
           <h5>Registrarse como:</h5>
           <div class="small-3 columns">
-            <label for="radio1"><input name="radioButtons" type="radio" id="radio1" required="">Centro de investifación</label>
-            <label for="radio2"><input name="radioButtons" type="radio" id="radio2" required="">Centro Educativo</label>
-            <label for="radio3"><input name="radioButtons" type="radio" id="radio3" required=""> Empresa</label>
+            <!-- <label for="radio1"><input name="radioButtons" type="radio" id="radio1" required="">Centro de investifación</label> -->
+            <label for="radio1"><%= radio_button_tag('tipo_registro', 'centro_investigacion',"",:html => { :required => true}) %> Centro de Investigación</label>
+            <!--  <label for="radio2"><input name="radioButtons" type="radio" id="radio2" required="">Centro Educativo</label> -->
+            <label for="radio1"><%= radio_button_tag('tipo_registro', 'institucion_educativa',"",:html => { :required => true}) %> Institucion Educativa</label>
+            <!-- <label for="radio3"><input name="radioButtons" type="radio" id="radio3" required=""> Empresa</label> -->
+            <label for="radio1"><%= radio_button_tag('tipo_registro', 'empresa',"",:html => { :required => true}) %> Empresa </label>
           </div>
           <div class="small-9 columns">
-            <label for="radio4"><input name="radioButtons" type="radio" id="radio4" required="">Investigador</label>
-            <label for="radio5"><input name="radioButtons" type="radio" id="radio5" required="">Estudiante</label>
-            <label for="radio6"><input name="radioButtons" type="radio" id="radio6" required="">Externo</label>
+            <!-- <label for="radio4"><input name="radioButtons" type="radio" id="radio4" required="">Investigador</label> -->
+            <label for="radio1"><%= radio_button_tag('tipo_registro', 'investigador',"",:html => { :required => true}) %> Investigador </label>
+            <!-- <label for="radio5"><input name="radioButtons" type="radio" id="radio5" required="">Estudiante</label> -->
+            <label for="radio1"><%= radio_button_tag('tipo_registro', 'estudiante',"",:html => { :required => true}) %> Estudiante </label>
+            <!-- <label for="radio6"><input name="radioButtons" type="radio" id="radio6" required="">Externo</label> -->
+            <label for="radio1"> <%= radio_button_tag('tipo_registro', 'externo',"",:html => { :required => true}) %> Externo </label>
+
           </div>
           <div class="small-2 columns"> <button type="submit">Registrarse</button> </div>
-          <%= submit_tag 'Siguiente' %>
       </div>
      <% end %>    
      <!-- </form> -->

@@ -12,6 +12,7 @@ Formulario institucion_educativa
 	<% end %>
 
 	<%= form_tag(controller: :registro, action: :create_institucion_educativa) do %>
+	<%= hidden_field_tag :user_id, @user_id %>
 	<div>
 		<label>
 			Nombre: 
