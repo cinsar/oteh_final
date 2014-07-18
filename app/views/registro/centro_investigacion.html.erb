@@ -9,14 +9,14 @@ Formulario centro_investigacion
 			<p><%= err %></p>
 		<% end %>
 		</div>
-	<% end %>
+	<% end
 
 	<%= form_tag(controller: :registro, action: :crear_centro_investigacion) do %>
 		<%= hidden_field_tag :user_id, @user_id %>
 	<div>
 		<label>
 			Nombre: 
-			
+
 			<%= text_field_tag :centro_investigacion_nombre, @centro_investigacion.nombre %>
 		</label>
 		  <%= hidden_field_tag :user_id, @user_id %>
