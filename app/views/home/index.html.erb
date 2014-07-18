@@ -22,20 +22,23 @@
 <div id="login" class="reveal-modal" data-reveal>
   <h2 color="blue">LOGIN</h2>
     <form data-abide>
+      <%= form_for(:user, :url => session_path(:user)) do |f| %>
       <div class="password-field">
       <div class="email-field">
         <label>Email <small>Requerido</small>
-          <input type="email" required>
+          <%= f.text_field :email%>
         </label>
         <small class="error">Ingrese un E-mail válido</small>
       </div>
         <label>Contraseña <small>Requrida</small>
-          <input type="password" id="password" required pattern="[a-zA-Z0-9]+">
+          <%= f.password_field :password %>
         </label>
         <small class="error">Ingrese su contraseña</small>
       </div>
       <button type="submit">Ingresar</button>
-    </form>
+      <label for="radio1"><%= f.check_box :remember_me %> <%= f.label :recuerdame %></label>
+      <label><%= link_to "¿Olvídaste tu contraseña?", new_password_path(:user) %></label>
+    <% end %>
   <a class="close-reveal-modal">&#215;</a>
   </div>
 
