@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 20140717014755) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "type",                   default: 1
     t.integer  "authenticable_id"
     t.string   "authenticable_type"
   end

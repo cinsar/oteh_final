@@ -1,0 +1,36 @@
+<h1>Articulo#new</h1>
+<p>Find me in app/views/articulo/new.html.erb</p>
+
+<%= form_tag(controller: :articulo, action: :create) do %>
+
+<div>
+		<label>
+			Tema del articulo: 
+			<%= text_field_tag :articulo_tema, @articulo.tema %>
+		</label>
+	</div>
+<div>
+		<label>
+			Titulo del articulo: 
+			<%= text_field_tag :articulo_titulo, @articulo.titulo %>
+		</label>
+	</div>
+
+<div>
+		<label>
+			Tipo: 
+			<%= select_tag :articulo_tipo, options_for_select([ "Cientificos", "Informativos", "Investigación", "Periodisticos" ], @articulo.tipo) %>
+		</label>
+	</div>
+
+<div>
+		<label>
+			Descripcion: 
+			<%= text_field_tag :articulo_descripcion, @articulo.descripcion %>
+		</label>
+	</div>
+
+
+	<%= submit_tag 'Guardar' %>
+	
+<% end %>
