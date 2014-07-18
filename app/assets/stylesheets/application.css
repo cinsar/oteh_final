@@ -10,9 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require wizzart.css
  *= require bootstrap.min
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
 
  */
+body {
+   background-color: #D4ECF8;
+}
