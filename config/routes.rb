@@ -1,58 +1,54 @@
 Rails.application.routes.draw do
   
-  root to: 'home#index'
+  scope path_names: { new: 'nuevo', create: 'crear' } do
 
-  devise_for :administrators
-  devise_for :users
+    devise_for :administrators, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas' }
+    devise_for :users, path: 'usuarios', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas', confirmation: 'confirmacion' }
 
+    authenticated :user do
+      # root :to => "main#dashboard", :as => "authenticated_root"
+      get 'grupos/nuevo'
+      post 'grupos/crear'
 
-  authenticated :user do
-    # root :to => "main#dashboard", :as => "authenticated_root"
-    get 'grupos/new'
-    post 'grupos/create'
-  end
-
-
-  authenticated :administrators do
-    # root :to => "main#dashboard", :as => "authenticated_root"
-    namespace :admin do
-      resources :grupos
+      get 'articulo/nuevo'
+      post 'articulo/crear'
     end
+
+    authenticated :administrators do
+      namespace :admin do
+        resources :grupos
+      end
+    end
+
+    # Todas las rutas del registro
+    
+    #Formulario inicial
+    get 'registro' => 'registro#index'
+    
+    #Formulario por tipo de registro
+    get 'registro/empresa'
+    get 'registro/externo'
+    get 'registro/institucion_educativa'
+    get 'registro/centro_investigacion'
+    get 'registro/investigador'
+    get 'registro/estudiante'
+    
+    # Creación del registro
+    post 'articulo/create'
+    post 'registro/index'
+    post 'registro/crear_empresa'
+    post 'registro/crear_externo'
+    post 'registro/crear_institucion_educativa'
+    post 'registro/crear_centro_investigacion'
+    post 'registro/crear_investigador'
+    post 'registro/crear_estudiante'
+
+    # FIN de Registro =============================
+   
+    
+    get 'direcciones/get_estados'
+    get 'direcciones/get_municipios'
   end
 
-
-
-
-
-  
-  get 'registro/index'
-  get 'registro/empresa'
-  get 'registro/externo'
-  get 'registro/institucion_educativa'
-  get 'registro/centro_investigacion'
-  get 'registro/investigador'
-  get 'registro/estudiante'
- 
-  
-  post 'registro/index'
-  post 'registro/create_empresa'
-  post 'registro/create_externo'
-  post 'registro/create_institucion_educativa'
-  post 'registro/create_centro_investigacion'
-  post 'registro/create_investigador'
-  post 'registro/create_estudiante'
- 
-  
-
-  get 'direcciones/get_estados'
-
-  get 'direcciones/get_municipios'
-
-  get 'empresas1/new'
-
-  get 'empresas1/create'
-
-  get 'empresas/new'
-
-  post 'empresas/create'
+  root to: 'home#index'
 end

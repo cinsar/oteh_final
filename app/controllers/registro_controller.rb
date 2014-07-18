@@ -89,7 +89,7 @@ class RegistroController < ApplicationController
 
 #create
 
-  def create_centro_investigacion
+  def crear_centro_investigacion
     @centro_investigacion = CentroInvestigacion.new(nombre: params[:centro_investigacion_nombre])
     @centro_investigacion.contacto = Contacto.new(tel: params[:representante_tel],email: params[:representante_email])
     @centro_investigacion.contacto.direccion = Direccion.new(calle: params[:direccion_calle], colonia: params[:direccion_colonia], cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
@@ -116,7 +116,7 @@ class RegistroController < ApplicationController
 
   end
 
-  def create_institucion_educativa
+  def crear_institucion_educativa
     @institucion_educativa = InstitucionEducativa.new(nombre: params[:institucion_educativa_nombre])
     @institucion_educativa.contacto = Contacto.new(tel: params[:institucion_educativa_tel])
     @institucion_educativa.contacto.direccion = Direccion.new(calle: params[:direccion_calle],colonia: params[:direccion_colonia],cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
@@ -143,7 +143,7 @@ class RegistroController < ApplicationController
     end
   end  
 
-  def create_empresa
+  def crear_empresa
     @empresa = Empresa.new(nombre: params[:empresa_nombre],giro: params[:empresa_giro],no_empleados:params[:empresa_no_empleados],persona_fiscal:params[:empresa_persona_fiscal])
     @empresa.contacto = Contacto.new(tel: params[:contacto_tel],email: params[:contacto_email],pag_web: params[:contacto_pag_web])
     @empresa.contacto.direccion = Direccion.new(calle: params[:direccion_calle],colonia: params[:direccion_colonia],cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
@@ -171,7 +171,7 @@ class RegistroController < ApplicationController
     end
   end
 
-  def create_investigador
+  def crear_investigador
     @persona = Persona.new(nombre: params[:persona_nombre], apellido_pat: params[:persona_apellido_pat], apellido_mat: params[:persona_apellido_mat])
     @persona.contacto = Contacto.new(tel: params[:persona_tel], email: params[:persona_email])
     @persona.contacto.direccion = Direccion.new(calle: params[:direccion_calle], colonia: params[:direccion_colonia], cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
@@ -196,7 +196,7 @@ class RegistroController < ApplicationController
     end
   end
 
-  def create_estudiante
+  def crear_estudiante
     @persona = Persona.new(nombre: params[:persona_nombre], apellido_pat: params[:persona_apellido_pat], apellido_mat: params[:persona_apellido_mat])
     @persona.contacto = Contacto.new(tel: params[:contacto_tel], email: params[:contacto_email])
     @persona.contacto.direccion = Direccion.new(calle: params[:direccion_calle], colonia: params[:direccion_colonia], cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
@@ -222,7 +222,7 @@ class RegistroController < ApplicationController
     end
   end
 
-  def create_externo
+  def crear_externo
     @persona = Persona.new(nombre: params[:persona_nombre], apellido_pat: params[:persona_apellido_pat], apellido_mat: params[:persona_apellido_mat])
     @persona.contacto = Contacto.new(tel: params[:contacto_tel], email: params[:contacto_email])
     @persona.contacto.direccion = Direccion.new(calle: params[:direccion_calle], colonia: params[:direccion_colonia], cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
