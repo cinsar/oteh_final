@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     
     #Formulario inicial
     get 'registro' => 'registro#index'
+    post 'registro' => 'registro#index'
     
     #Formulario por tipo de registro
     get 'registro/empresa'
@@ -35,7 +36,6 @@ Rails.application.routes.draw do
     
     # Creación del registro
     post 'articulo/create'
-    post 'registro/index'
     post 'registro/crear_empresa'
     post 'registro/crear_externo'
     post 'registro/crear_institucion_educativa'
