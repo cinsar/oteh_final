@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   
   scope path_names: { new: 'nuevo', create: 'crear' } do
 
-    devise_for :administrators, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas' }
     devise_for :users, path: 'usuarios', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas', confirmation: 'confirmacion' }
+    devise_for :administrators, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas' }
 
     authenticated :user do
-      # root :to => "main#dashboard", :as => "authenticated_root"
+      root to: "home#usuario", as: "authenticated_root"
+      
       get 'grupos/nuevo'
       post 'grupos/crear'
 

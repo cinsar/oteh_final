@@ -6,7 +6,7 @@ default: &default
   pool: 5
   # username: oteh
   #password:
-  host: localhost
+  host: 200.57.48.246
   #port: 5432
 
 development:
