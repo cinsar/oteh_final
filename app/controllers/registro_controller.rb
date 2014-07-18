@@ -95,7 +95,7 @@ class RegistroController < ApplicationController
     @centro_investigacion.contacto.direccion = Direccion.new(calle: params[:direccion_calle], colonia: params[:direccion_colonia], cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
 
     @representante = Representante.new(puesto: params[:representante_puesto])
-    @representante.contacto = Contacto.new(tel: params[:representante_tel],email: params[:representante_email])
+    @representante.contacto = Contacto.new(tel: params[:representante_tel])
     @persona = @representante.contacto.contactable = Persona.new(nombre: params[:representante_nombre])
 
     @guardado = false
@@ -118,18 +118,23 @@ class RegistroController < ApplicationController
 
   def crear_institucion_educativa
     @institucion_educativa = InstitucionEducativa.new(nombre: params[:institucion_educativa_nombre])
-    @institucion_educativa.contacto = Contacto.new(tel: params[:institucion_educativa_tel],email: params[:institucion_educativa_email])
+    @institucion_educativa.contacto = Contacto.new(tel: params[:institucion_educativa_tel])
     @institucion_educativa.contacto.direccion = Direccion.new(calle: params[:direccion_calle],colonia: params[:direccion_colonia],cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
     
     @representante = Representante.new(puesto: params[:representante_puesto])
-    @representante.contacto = Contacto.new(tel: params[:contacto_tel],email: params[:contacto_email])
+    @representante.contacto = Contacto.new(tel: params[:representante_tel],email: params[:representante_email])
     @persona = @representante.contacto.contactable = Persona.new(nombre: params[:representante_nombre], apellido_pat: params[:representante_apellido_pat], apellido_mat: params[:representante_apellido_mat])
     
 
     @guardado = false
 
     ActiveRecord::Base.transaction do
-      @institucion_educativa.save and @representante.save and @persona and @guardado = true
+
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado =(@institucion_educativa.save and @representante.save and @persona and @user.save)
+      raise ActiveRecord::Rollback if !@guardado
     end
 
     if @guardado
@@ -149,8 +154,14 @@ class RegistroController < ApplicationController
 
     @representante.representable = @empresa
 
+    @guardado = false
+
     ActiveRecord::Base.transaction do
-      @guardado = (@empresa.save and @representante.save  and @persona.save)
+
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado = (@empresa.save and @representante.save  and @persona.save and @user.save)
       raise ActiveRecord::Rollback if !@guardado
     end
 
@@ -171,7 +182,11 @@ class RegistroController < ApplicationController
     @guardado = false
 
     ActiveRecord::Base.transaction do
-      @guardado = (@persona.save and @investigador.save)
+
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado = (@persona.save and @investigador.save and @user.save)
       raise ActiveRecord::Rollback if !@guardado
     end
 
@@ -193,7 +208,11 @@ class RegistroController < ApplicationController
     @guardado = false
 
     ActiveRecord::Base.transaction do
-      @guardado = (@persona.save and @estudiante.save and @institucion_educativa.save)
+
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado = (@persona.save and @estudiante.save and @institucion_educativa.save and @user.save)
       raise ActiveRecord::Rollback if !@guardado
     end
 
@@ -207,13 +226,17 @@ class RegistroController < ApplicationController
     @persona = Persona.new(nombre: params[:persona_nombre], apellido_pat: params[:persona_apellido_pat], apellido_mat: params[:persona_apellido_mat])
     @persona.contacto = Contacto.new(tel: params[:contacto_tel], email: params[:contacto_email])
     @persona.contacto.direccion = Direccion.new(calle: params[:direccion_calle], colonia: params[:direccion_colonia], cp: params[:direccion_cp], municipio_id: params[:direccion_municipio])
+    @externo = Externo.new(persona: @persona)
+    
 
     @guardado = false
-
-    @externo = Externo.new(persona: @persona)
-
+    
     ActiveRecord::Base.transaction do
-      @externo.save and @persona.save and @guardado = true
+      @user = User.where(id: params[:user_id]).first
+      @user.authenticable = @persona if @user
+
+      @guardado = (@externo.save and @persona.save and @user.save)
+      raise ActiveRecord::Rollback if !@guardado
     end
 
     if @guardado

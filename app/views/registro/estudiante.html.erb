@@ -12,13 +12,14 @@ Formulario estudiante
 			<p><%= err %></p>
 		<% end %>
 
-		<% @estudiante.institucion_educativa.errors.full_messages.each do |err| %>
+		<% @institucion_educativa.errors.full_messages.each do |err| %>
 			<p><%= err %></p>
 		<% end %>
 
 	</div>
 
 	<%= form_tag(controller: :registro, action: :create_estudiante) do %>
+	<%= hidden_field_tag :user_id, @user_id %>
 	<div>
 		<label>
 			Nombre: 
