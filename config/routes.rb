@@ -5,6 +5,14 @@ Rails.application.routes.draw do
     devise_for :users, path: 'usuarios', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas', confirmation: 'confirmacion' }
     devise_for :administrators, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout', password: 'contrasenas' }
 
+
+    authenticated :administrators do
+      namespace :admin do
+        root to: "home#admin"
+        resources :grupos
+      end
+    end
+
     authenticated :user do
       root to: "home#usuario", as: "authenticated_root"
       
@@ -15,11 +23,7 @@ Rails.application.routes.draw do
       post 'articulo/crear'
     end
 
-    authenticated :administrators do
-      namespace :admin do
-        resources :grupos
-      end
-    end
+
 
     # Todas las rutas del registro
     
